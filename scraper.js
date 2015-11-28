@@ -41,11 +41,11 @@ function fetchPage(url, callback) {
 
 function run(db) {
 	// Use request to read in pages.
-	fetchPage("https://www.yell.com/ucs/UcsSearchAction.do?keywords=pizza&location=bournemouth&scrambleSeed=833794509", function (body) {
+	fetchPage("https://www.yell.com/ucs/UcsSearchAction.do?keywords=pizza&location=southampton&scrambleSeed=833794509", function (body) {
 		// Use cheerio to find things in the page with css selectors.
 		var $ = cheerio.load(body);
 
-		var elements = $("div.businessCapsule--title").each(function () {
+		var elements = $("div.businessCapsule-fle").each(function () {
 			var value = $(this).text().trim();
 			updateRow(db, value);
 		});
